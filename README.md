@@ -4,93 +4,102 @@ A simple task management application built with the MERN stack (MongoDB, Express
 
 ## Features
 
-- View all tasks
+- View all tasks with creation timestamps
 - Add new tasks with title and description
 - Delete existing tasks
+- Form validation for task creation
 - Responsive design with Tailwind CSS
+- Real-time error handling and feedback
 
 ## Tech Stack
 
 ### Frontend
-- React.js (with Hooks for state management)
+- React.js (with Hooks)
 - Tailwind CSS for styling
 - Vite as the build tool
 
 ### Backend
-- Node.js with Express.js for the REST API
-- MongoDB with Mongoose for data storage
+- Node.js with Express.js
+- MongoDB with Mongoose
+- Express Validator for input validation
+- CORS enabled for cross-origin requests
 
-## Setup Instructions
+## Prerequisites
 
-### Prerequisites
-- Node.js (v14 or higher)
-- MongoDB (running locally or a MongoDB Atlas connection)
+- Node.js (v18 or higher)
+- MongoDB (local or MongoDB Atlas)
+- pnpm package manager
 
-### Backend Setup
-1. Navigate to the server directory:
+## Installation & Setup
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
    ```
+
+2. Backend Setup:
+   ```bash
    cd server
+   pnpm install
+   ```
+   
+   Create a `.env` file in the server directory:
+   ```
+   PORT=3000
+   MONGO_URI=your_mongodb_connection_string
    ```
 
-2. Install dependencies:
-   ```
-   npm install
-   ```
-
-3. Start the server:
-   ```
-   npm run dev
-   ```
-   The server will run on http://localhost:5000
-
-### Frontend Setup
-1. Navigate to the client directory:
-   ```
+3. Frontend Setup:
+   ```bash
    cd client
+   pnpm install
    ```
 
-2. Install dependencies:
-   ```
-   npm install
-   ```
+## Running the Application
 
-3. Start the development server:
+1. Start the backend server:
+   ```bash
+   cd server
+   node index.js
    ```
-   npm run dev
+   The server will run on http://localhost:3000
+
+2. Start the frontend development server:
+   ```bash
+   cd client
+   pnpm dev
    ```
    The application will open in your browser at http://localhost:5173
 
 ## API Endpoints
 
+### Tasks
 - `GET /tasks` - Fetch all tasks
-- `POST /tasks` - Add a new task
+- `POST /tasks` - Create a new task
+  - Required fields: `title`
+  - Optional fields: `description`, `completed`
 - `DELETE /tasks/:id` - Delete a task by ID
 
 ## Project Structure
 
 ```
 task-management-app/
-├── client/             # Frontend React app
-│   ├── public/
+├── client/                 # Frontend React application
 │   ├── src/
-│   │   ├── components/
+│   │   ├── components/    # React components
 │   │   │   ├── TaskForm.jsx
 │   │   │   ├── TaskList.jsx
 │   │   │   └── TaskItem.jsx
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   ├── package.json
-│   └── tailwind.config.js
-├── server/             # Backend Node.js app
-│   ├── index.js        # Express server and API routes
+│   │   ├── App.jsx       # Main application component
+│   │   └── main.jsx      # Application entry point
 │   └── package.json
-└── README.md           # Project documentation
+│
+├── server/                # Backend Node.js application
+│   ├── config/           # Configuration files
+│   ├── db/              # Database models and connection
+│   ├── routes/          # API routes
+│   ├── index.js         # Server entry point
+│   └── package.json
+│
+└── README.md
 ```
-
-## Future Improvements
-
-- Add task editing functionality
-- Implement authentication
-- Add task categories or labels
-- Implement task completion toggle
-- Add sorting and filtering options
