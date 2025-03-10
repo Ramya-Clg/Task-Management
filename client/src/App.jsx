@@ -7,7 +7,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const API_URL = 'https://task-management-htom.onrender.com';
+  const API_URL = 'https://task-management-s8pb.onrender.com';
 
   const fetchTasks = async () => {
     try {
