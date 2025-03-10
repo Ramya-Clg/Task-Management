@@ -21,7 +21,7 @@ function TaskForm({ addTask }) {
       setIsSubmitting(true);
       const result = await addTask(newTask);      
       if (result && result.errors) {
-        const formattedErrors = {};
+        var formattedErrors = {};
         
         if (Array.isArray(result.errors)) {
           result.errors.forEach(err => {
